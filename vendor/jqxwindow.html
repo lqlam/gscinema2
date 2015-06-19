@@ -1,0 +1,18 @@
+<script type="text/javascript" src="js/jqwidgets/jqxwindow.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#jqxwindowMap").jqxWindow({ width: 600, height: 400, theme: 'metro', isModal: false, autoOpen: false });
+        $("#lnkViewMap").click(function () {
+            var x = ($(window).width() - $("#jqxwindowMap").jqxWindow('width')) / 2 + $(window).scrollLeft();
+            var y = ($(window).height() - $("#jqxwindowMap").jqxWindow('height')) / 2 + $(window).scrollTop();
+            $("#jqxwindowMap").jqxWindow({ position: { x: x, y: y} });
+            $("#jqxwindowMap").jqxWindow('open');
+            return false; // prevent default click action from happening!
+        });
+    });
+</script>
+
+<div id="jqxwindowMap">
+    <div>Vị trí chúng tôi trên bản đồ</div>
+    <div>Vị trí chúng tôi trên bản đồ</div>
+</div>
