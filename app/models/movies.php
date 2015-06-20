@@ -17,6 +17,18 @@
 //            }
         }
         
+        public function GetListByName($name)
+        {
+            $name = str_replace('-', ' ', $name);
+            $name = str_replace('_', ':', $name);
+            $m = new dataservice_mongodb();
+            //$cond = array('IntTitle' => array('$regex' => 'Quyên'));
+            $cond = array('IntTitle' => array('$regex' => new MongoRegex("/^$name/u")));
+            //$cond = new MongoRegex("/\\b(" . implode(':', $name) . ").*\\b/i");
+            //$cond2 = implode('-', $cond);
+            $filter = array();
+            return $m->Select($cond,$filter,'movies');
+        }
         
         public function GetListById($v_id)
         {            

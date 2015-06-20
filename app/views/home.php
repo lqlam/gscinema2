@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var xmlhttp = new XMLHttpRequest();
-    var url = "../public/movies_showing.json";
+    var url = "movies_showing.json";
     
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -20,9 +20,11 @@
             if(arrstr[0]==null) arrstr[0]='';
             //if(arrstr[1]==null) arrstr[1]='';
             if(typeof arrstr[1]=='undefined') arrstr[1]='';
+            var intTitleNoSpace = arr[i].IntTitle.split(':').join('_');
+            var intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
             out += "<div class=\"b-items\">" +
-                "<a href=\"phim-1.html\"><img class=\"posterPhim\" src=\"img/movie/"+"thumb-"+arr[i]._id.$id+".jpg\" /></a>" +
-                "<h2><a href=\"phim-1.html\">"+arr[i].IntTitle+"</a></h2>" +
+                "<a href=\"index.php?act=movie&inttitle="+intTitleNoSpace+"\"><img class=\"posterPhim\" src=\"img/movie/"+"thumb-"+arr[i]._id.$id+".jpg\" /></a>" +
+                "<h2><a href=\"\">"+arr[i].IntTitle+"</a></h2>" +
                 "<h3 class=\"formatmovies formatmovies_2D\">"+arrstr[0]+"</h3>" +
                 "<h3 class=\"formatmovies formatmovies_3D\">"+arrstr[1]+"</h3>" +                                                                        
                 "<h3 style=\"float: right;\"></h3>" +
@@ -47,7 +49,7 @@
 </script>
 <script type="text/javascript">
 var xmlhttp2 = new XMLHttpRequest();
-var url = "../public/schedules.json";
+var url = "schedules.json";
 
 xmlhttp2.onreadystatechange=function() {
     if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
@@ -151,7 +153,7 @@ function myFunction2(response) {
 		<div style="border-top: 1px solid #D8DFEA;"></div>
 		<ul>
 			<li>
-				<a id="lnkRegis" class="fntGrey" style="float: right; font-size: 14px;" href="#"><span>Đăng ký</span><img style="float: right;" src="images/sidebox_arrow.png" alt="" /></a>
+				<a id="lnkRegis" class="fntGrey" style="float: right; font-size: 14px;" href="#"><span>Đăng ký </span><i class="fa fa-chevron-circle-right"></i></a>
 			</li>
 		</ul>
 	</div>
@@ -192,7 +194,7 @@ function myFunction2(response) {
 		<div style="border-top: 1px solid #D8DFEA;"></div>
 		<ul>
 			<li>
-				<a class="fntGrey" style="float: right; font-size: 14px;" href="index.php?act=lichchieu"><span>Xem thêm</span><img style="float: right;" src="images/sidebox_arrow.png" alt="" /></a>
+				<a class="fntGrey" style="float: right; font-size: 14px;" href="index.php?act=lichchieu"><span>Xem thêm </span><i class="fa fa-chevron-circle-right"></i></a>
 			</li>
 		</ul>
 	</div>

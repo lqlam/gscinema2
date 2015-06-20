@@ -18,6 +18,7 @@ include_all_php("../app/helpers");
 
     <link rel="stylesheet" type="text/css" href="css/main_style.css" media="all" />
     <link rel="stylesheet" type="text/css" href="css/font_external.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" media="all" />
 
     <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
     <!-- jqwidgets -->
@@ -55,12 +56,12 @@ include_all_php("../app/helpers");
     <div id="header">
         <div id="h-content">
             <ul id="h-nav">
-                <li class="site-name"><a href="index.php"></a></li>
-                <li class=""><a href="index.php?act=gioithieu">Giới thiệu</a></li>
-                <li class=""><a href="index.php?act=lichchieu">Lịch chiếu</a></li>
-                <li class=""><a href="index.php?act=banggiave">Giá vé</a></li>
-                <li class=""><a href="index.php?act=phimds">Phim</a></li>
-                <li class=""><a href="index.php?act=tintucds">Tin tức</a></li>
+                <li class="site-name"><a href="index.php?act=home"></a></li>
+                <li class=""><a href="index.php?act=introduce">Giới thiệu</a></li>
+                <li class=""><a href="index.php?act=schedule">Lịch chiếu</a></li>
+                <li class=""><a href="index.php?act=tickettable">Giá vé</a></li>
+                <li class=""><a href="index.php?act=movielist">Phim</a></li>
+                <li class=""><a href="index.php?act=reviewlist">Tin tức</a></li>
                 <li class=""><a href="index.php?act=tuyendung">Tuyển dụng</a></li>
                 <li class=""><a href="#">Liên hệ</a></li>
             </ul>
@@ -74,9 +75,9 @@ include_all_php("../app/helpers");
             <div style="border-top: 1px solid #D8DFEA; margin-bottom: 15px;"></div>
             <div id="f-top-content">
                 <div class="f-left" style="float: left">
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /><h3 class="fntGrey">108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang</h3></div>
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /><h3 class="fntGrey">0763 958 958</h3></div>
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /><h3 class="fntGrey">saovanglongxuyen@gmail.com</h3></div>
+                    <div><i class="fa fa-map-marker fntGrey"></i><h3 class="fntGrey">108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang</h3></div>
+                    <div><i class="fa fa-mobile fntGrey"></i><h3 class="fntGrey">0763 958 958</h3></div>
+                    <div><i class="fa fa-envelope-o fntGrey"></i><h3 class="fntGrey">saovanglongxuyen@gmail.com</h3></div>
                 </div>
                 <div class="f-right" style="float: right">
                     <div><img src="images/email.svg" width="20px" height="20px" alt="" /></div>

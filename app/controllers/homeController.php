@@ -1,19 +1,19 @@
 <?php
     include ('../app/models/movies.php');
-    include ('../app/models/lichchieu.php');
+    include ('../app/models/schedule.php');
     
     class homeController
     {
         //Methods
         public function __construct()
 		{
-            if(!IsMD5Same($this->GetMoviesList(),"../public/movies_showing.json"))
-                WriteJSON($this->GetMoviesList(),"../public/movies_showing.json");
+            if(!IsMD5Same($this->GetMoviesList(),"movies_showing.json"))
+                WriteJSON($this->GetMoviesList(),"movies_showing.json");
                 
-            if(!IsMD5Same($this->GetScheduleList(),"../public/schedules_tmp.json"))
+            if(!IsMD5Same($this->GetScheduleList(),"schedules_tmp.json"))
             {
-                WriteJSON($this->GetScheduleList(),"../public/schedules_tmp.json");
-                $str = file_get_contents("../public/schedules_tmp.json");
+                WriteJSON($this->GetScheduleList(),"schedules_tmp.json");
+                $str = file_get_contents("schedules_tmp.json");
                 $arr = json_decode($str, true);
                 //sua lai cau truc array
                 $arrChanged = ArrScheduleChangeStyle($arr);
@@ -33,7 +33,7 @@
                         $result[$i]['movies'][$j]['_id'] = $this->GetMoviesListById($v_id);
                     }
                 }
-                WriteJSON($result,"../public/schedules.json");
+                WriteJSON($result,"schedules.json");
             }
 		}
     	public function GetMoviesList()
@@ -46,10 +46,15 @@
     		$movies = new movies();
     		return $movies->GetListById($v_id);
     	}
+    	public function GetMoviesListByName()
+    	{
+    		$movies = new movies();
+    		return $movies->GetListByName();
+    	}
     	public function GetScheduleList()
     	{
-    		$lichchieu = new lichchieu();
-    		return $lichchieu->GetList();
+    		$schedule = new schedule();
+    		return $schedule->GetList();
     	}
     }
     

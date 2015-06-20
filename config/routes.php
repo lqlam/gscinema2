@@ -2,20 +2,23 @@
 	$act = isset($_GET['act']) ? $_GET['act'] : "";
 	switch($act)
 	{
-		case "gioithieu":
-			include "../app/controllers/gioithieuController.php";
+		case "introduce":
+			include "../app/controllers/introduceController.php";
 			break;
-		case "lichchieu":
-			include "../app/controllers/lichchieuController.php";
+		case "schedule":
+			include "../app/controllers/scheduleController.php";
 			break;
-		case "banggiave":
-			include "../app/controllers/banggiaveController.php";
+		case "tickettable":
+			include "../app/controllers/tickettableController.php";
 			break;
-		case "phimds":
-			include "../app/controllers/phimdsController.php";
+		case "movielist":
+			include "../app/controllers/movielistController.php";
 			break;
-		case "tintucds":
-			include "../app/controllers/tintucdsController.php";
+		case "reviewlist":
+			include "../app/controllers/reviewlistController.php";
+			break;
+		case "movie":
+			include "../app/controllers/movieController.php";
 			break;
             
 		default:
