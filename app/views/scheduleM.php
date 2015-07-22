@@ -129,8 +129,6 @@ $(document).ready(function(e) {
     </div>
 </div>
 <div id="thumb-tray">
-    <div id="fade-left"></div>
-    <div id="fade-right"></div>
     <div id="thumb-tray-content">
         <?php echo $resultDateOfSchedule; ?>
     </div>
@@ -929,19 +927,5 @@ $(document).ready(function(e) {
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div id="w-right">
-    <div class="content-header">
-        <div class="c-h-menu-null"></div>
-        <div class="c-h-menu">
-            <h2>Links</h2>
-        </div>
-    </div>
-    <div style="border-top: 1px solid rgba(69, 69, 69, 0.8);"></div>
-    <div class="content-swap">
-        <ul>
-            <li><p><a href="#">Hướng dẫn đặt vé</a></p></li>
-        </ul>
     </div>
 </div>

@@ -1,8 +1,19 @@
+<script type="text/javascript">
+$(document).ready(function () {
+    if(screen.availWidth <= 1180)
+        $("#thumb-tray").css({'overflow': 'hidden'});
+});
+</script>
+<style type="text/css">
+    body {
+        background: #000000;
+    }
+</style>
 <div id="bangGiaVe-container">
     <div class="bgv-subtitle" style="width: 76.2%; float: left;">2D</div>
     <div class="bgv-subtitle" style="width: 23%; float: right;">3D</div>
     <div style="clear: both;"></div>
-	<table>
+	<table id="ticket-table">
 		<thead>
 			<tr>
 				<th class="bgGrey" style="color: #3B3B3B;">Ngày</th>
@@ -172,9 +183,3 @@
         </ul>
     </div>
 </div>
-
-<style type="text/css">
-body {
-    background: #000000;
-}
-</style>

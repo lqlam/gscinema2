@@ -1,19 +1,109 @@
-<img src="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg" width="980px" height="490px" alt="" />
+<script type="text/javascript">
+$(document).ready(function () {
+    if(screen.availWidth <= 1180)
+        $("#thumb-tray").css({'overflow': 'hidden'});
+});
+</script>
+<style type="text/css">
+    body {
+        background: #000000;
+    }
+</style>
+<script src="http://www.youtube.com/player_api"></script>
+<script type="text/javascript">    
+    function onYouTubePlayerAPIReady() {
+        // create the global player from the specific iframe (#video)
+        player = new YT.Player('player', {
+            events: {
+                // call this function when player is ready to use
+                'onReady': onPlayerReady
+            }
+        });
+    }
+    
+    function onPlayerReady() {
+        //bind events
+        $(".lnkThumb1").bind('click', function() {
+            if($(this).hasClass("selected")) {
+    			$(this).removeClass("selected");
+                player.pauseVideo();
+            }
+    		else {
+    			$(this).addClass("selected");
+                player.playVideo();
+            }
+        });
+    }
+    
+    //function onPlayerReady() {
+//        // bind events
+//        document.getElementById("lnkThumb").addEventListener("click", function() {
+//            if($(this).hasClass("selected")) {
+//    			$(this).removeClass("selected");
+//                player.pauseVideo();
+//            }
+//    		else {
+//    			$(this).addClass("selected");
+//                player.playVideo();
+//            }
+//        });
+//    }
+    
+
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $(".lnkThumb").click(function () {
+            var out = "";
+            if($(this).hasClass("video")) {
+                out += "<iframe src=\""+$(this).attr("data")+"\" scrolling=\"no\" frameborder=\"0\" id=\"player\" width=\"980px\" height=\"490px\" style=\"display: block;\"></iframe>";
+            }else
+                out += "<img src=\""+$(this).attr("data")+"\" width=\"980px\" height=\"490px\" alt=\"\" />";
+            $('#mv-box').empty().append(out);
+            $(".thumb-tray-content-items").find(".selected").removeClass("selected");
+        	$(this).find("img").addClass("selected");
+            runEffect();
+        });
+    $('.lnkThumb:first').trigger('click');    
+});
+</script>
+<script>
+    // run the currently selected effect
+    function runEffect() {
+        // get effect type from
+        var myArray = ['fade'];
+        var rand = myArray[Math.floor(Math.random() * myArray.length)];
+        var selectedEffect = rand;
+        // most effect types need no options passed by default
+        var options = {};
+        // run the effect
+        $(".effect").effect( selectedEffect, options, 500, callback );
+    };
+    // callback function to bring a hidden box back
+    function callback() {
+        setTimeout(function() {
+        $(".effect").removeAttr("style").hide().fadeIn();
+        }, 200 );
+    };
+</script>
+<div id="movie-container">
+    <div id="mv-box" class="effect">
+        <!-- -->
+    </div>
+</div>
 <div id="thumb-tray">
     <div id="fade-left"></div>
     <div id="fade-right"></div>
     <div id="thumb-tray-content">
         <div class="thumb-tray-content-items">
-			<a href="#" data-image="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg" data-zoom-image="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg">
-				<img src="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg" width="160px" height="90px" />
+            <a class="lnkThumb image" data="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg">
+				<img class="image-opaque" src="userfiles/11048-the-avengers-1920x1080-movie-wallpaper.jpg" width="160px" height="90px"/>
 			</a>
         </div>
         <div class="thumb-tray-content-items">
-        
-        </div>
-        <div class="thumb-tray-content-items">
-        </div>
-        <div class="thumb-tray-content-items">
+			<a class="lnkThumb video" data="//www.youtube.com/embed/JAUoeqvedMo?enablejsapi=1">
+				<img class="image-opaque" src="https://img.youtube.com/vi/JAUoeqvedMo/mqdefault.jpg" width="160px" height="90px" />
+			</a>
         </div>
     </div>
 </div>
@@ -73,9 +163,3 @@
         </ul>
     </div>
 </div>
-
-<style type="text/css">
-body {
-    background: #000000;
-}
-</style>

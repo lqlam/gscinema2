@@ -7,33 +7,7 @@
         //Methods
         public $out;
         public function __construct()
-		{
-            if(!IsMD5Same($this->GetScheduleList(),"schedules_tmp.json"))
-            {
-                WriteJSON($this->GetScheduleList(),"schedules_tmp.json");
-                $str = file_get_contents("schedules_tmp.json");
-                $arr = json_decode($str, true);
-                //sua lai cau truc array
-                $arrChanged = ArrScheduleChangeStyle($arr);
-                //sap xep suat chieu tang dan
-                $arrTimeSorted = ArrScheduleSortTimeShowing($arrChanged);
-                //chuyen doi suat chieu sang dang time
-                $arrTimeConverted = ArrScheduleConvertTimeShowing($arrTimeSorted);
-                //chuyen doi ngay chieu sang dang chuan
-                $arrDateConverted = ArrScheduleConvertDateShowing($arrTimeConverted);
-                //chen thong tin phim vao lich chieu
-                $result = $arrDateConverted;
-                for($i = 0; $i < sizeof($result); $i++)
-                {
-                    for($j = 0; $j < sizeof($result[$i]['movies']); $j++)
-                    {
-                        $v_id = $result[$i]['movies'][$j]['_id'];
-                        $result[$i]['movies'][$j]['_id'] = $this->GetMoviesListById($v_id);
-                    }
-                }
-                WriteJSON($result,"schedules.json");
-            }
-            
+		{            
             $str = file_get_contents("schedules.json");
             $arr = json_decode($str, true);
             for($i=0; $i<sizeof($arr); $i++)
@@ -77,7 +51,10 @@
     	}
     }
     $scheduleController = new scheduleController();
-    $resultDateOfSchedule = $scheduleController->out;
-    
-    include ('../app/views/schedule.php');
+    $resultDateOfSchedule = $scheduleController->out;    
+
+    if($_SERVER['HTTP_HOST'] == "m.gs2.com" || $_SERVER['HTTP_HOST'] == "192.168.1.4")
+		include_once ('../app/views/scheduleM.php');
+    else        
+		include_once ('../app/views/schedule.php');
 ?>

@@ -1,29 +1,28 @@
 <?php
-    include ('../app/models/movies.php');
-    include ('../app/models/schedule.php');
+    include_once ('../app/models/movies.php');
+    include_once ('../app/models/schedule.php');
     
     class homeController
     {
         //Methods
-        public function __construct()
+        public function __construct1()
 		{
-            if(!IsMD5Same($this->GetMoviesList(),"movies_showing.json"))
-                WriteJSON($this->GetMoviesList(),"movies_showing.json");
-                
+            //lich chieu + phim dang chieu
             if(!IsMD5Same($this->GetScheduleList(),"schedules_tmp.json"))
             {
+                ////lich chieu
                 WriteJSON($this->GetScheduleList(),"schedules_tmp.json");
                 $str = file_get_contents("schedules_tmp.json");
                 $arr = json_decode($str, true);
-                //sua lai cau truc array
+                //////sua lai cau truc array
                 $arrChanged = ArrScheduleChangeStyle($arr);
-                //sap xep suat chieu tang dan
+                //////sap xep suat chieu tang dan
                 $arrTimeSorted = ArrScheduleSortTimeShowing($arrChanged);
-                //chuyen doi suat chieu sang dang time
+                //////chuyen doi suat chieu sang dang time
                 $arrTimeConverted = ArrScheduleConvertTimeShowing($arrTimeSorted);
-                //chuyen doi ngay chieu sang dang chuan
+                //////chuyen doi ngay chieu sang dang chuan
                 $arrDateConverted = ArrScheduleConvertDateShowing($arrTimeConverted);
-                //chen thong tin phim vao lich chieu
+                //////chen thong tin phim vao lich chieu
                 $result = $arrDateConverted;
                 for($i = 0; $i < sizeof($result); $i++)
                 {
@@ -34,7 +33,31 @@
                     }
                 }
                 WriteJSON($result,"schedules.json");
+                
+                ////phim dang chieu (khi lich chieu thay doi)
+                $arrMovieShowing = array();
+                $result = $arrDateConverted;                
+                for($j = 0; $j < sizeof($result[0]['movies']); $j++)
+                {
+                    $arrMovieShowing[] = $result[0]['movies'][$j]['_id'];
+                }
+                WriteJSON($this->GetMoviesListById2($arrMovieShowing),"movies_showing.json");
             }
+            //phim sap chieu
+            if(!IsMD5Same($this->GetMoviesList2(),"movies_next.json"))
+                WriteJSON($this->GetMoviesList2(),"movies_next.json");
+            //phim dang chieu
+            $str = file_get_contents("schedules.json");
+            $arr = json_decode($str, true);
+            $arrMovieShowing = array();
+            $result = $arr;                
+            for($j = 0; $j < sizeof($result[0]['movies']); $j++)
+            {
+                $arrMovieShowing[] = $result[0]['movies'][$j]['_id'][0]['_id']['$id'];
+            }
+            ////(khi info film thay doi)
+            if(!IsMD5Same($this->GetMoviesListById2($arrMovieShowing),"movies_showing.json"))
+                WriteJSON($this->GetMoviesListById2($arrMovieShowing),"movies_showing.json");
 		}
     	public function GetMoviesList()
     	{
@@ -56,11 +79,23 @@
     		$schedule = new schedule();
     		return $schedule->GetList();
     	}
+    	public function GetMoviesListById2($arrId)
+    	{
+    		$movies = new movies();
+    		return $movies->GetListById2($arrId);
+    	}
+    	public function GetMoviesList2()
+    	{
+    		$movies = new movies();
+            return $movies->GetList2();
+    	}
     }
     
     $homeController = new homeController();
-    
-    include ('../app/views/home.php');
+    if($_SERVER['HTTP_HOST'] == "m.gs2.com" || $_SERVER['HTTP_HOST'] == "192.168.1.4")
+        include_once('../app/views/homeM.php');
+    else        
+        include_once('../app/views/home.php');
     
     //$to_time = strtotime("2008-12-13 10:42:00");
     //$from_time = strtotime("2008-12-13 10:21:00");

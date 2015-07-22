@@ -64,7 +64,7 @@
         function ScaleSlider() {
             var parentWidth = jssor_sliderb.$Elmt.parentNode.clientWidth;
             if (parentWidth)
-                jssor_sliderb.$ScaleWidth(Math.min(parentWidth, 464));
+                jssor_sliderb.$ScaleWidth(Math.min(parentWidth, 6920));
             else
                 window.setTimeout(ScaleSlider, 30);
         }
@@ -201,34 +201,34 @@ $(document).ready(function () {
 </script>
 <div id="w-left">
 	<div id="w-left-top">
-        <div id="sliderb_container" style="position: relative; top: 0px; left: 0px; width: 464px; height: 230px; overflow: hidden; float: left;">
+        <div id="sliderb_container" class="noSwipe" style="position: relative; top: 0px; left: 0px; width: 464px; height: 230px; overflow: hidden;">
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
                 <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block; background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
                 </div>
-                <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center; top: 0px; left: 0px;width: 100%;height:100%;">
+                <div style="position: absolute; display: block; background: url(img/loading.gif) no-repeat center center; top: 0px; left: 0px;width: 100%;height:100%;">
                 </div>
             </div>
     
             <!-- Slides Container -->
-            <div u="slides" style="position: absolute; left: 0px; top: 0px; width: 464px; height: 230px; overflow: hidden;">
+            <div class="slide-container" u="slides" style="position: absolute; left: 0px; top: 0px; width: 464px; height: 230px; overflow: hidden;">
                 <div>
                     <a href="#">
                         <img u=image src="userfiles/01.jpg" />
                     </a>
-                    <div u="thumb">Do you notice it is draggable by mouse/finger?</div>
+                    <div u="thumb">Infomation 1</div>
                 </div>
                 <div>
                     <img u=image src="userfiles/02.jpg" />
-                    <div u="thumb">Did you drag by either horizontal or vertical?</div>
+                    <div u="thumb">Infomation 2</div>
                 </div>
                 <div>
                     <img u=image src="userfiles/03.jpg" />
-                    <div u="thumb">Do you notice navigator responses when drag?</div>
+                    <div u="thumb">Infomation 3</div>
                 </div>
                 <div>
                     <img u=image src="userfiles/02.jpg" />
-                    <div u="thumb">Do you notice arrow responses when click?</div>
+                    <div u="thumb">Infomation 4</div>
                 </div>
             </div>
             
@@ -239,7 +239,7 @@ $(document).ready(function () {
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides">
                     <div u="prototype" style="position: absolute; width: 464px; height: 45px; top: 0; left: 0;">
-                    <div u="thumbnailtemplate" style="font-family: verdana; font-weight: normal; position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                    <div u="thumbnailtemplate" style="font-family: verdana; font-weight: normal; position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:18px; padding-left:10px;"></div>
                     </div>
                 </div>
             </div>
@@ -301,15 +301,13 @@ $(document).ready(function () {
             <span u="arrowright" class="jssora05r" style="top: 123px; right: 8px;">
             </span>
         </div>
-        <div class="ads" style="position: relative; top: 0px; right: 0px; height: 230px; background: #000; float: right; width: 306px;">
-        </div>
 	</div>
 	<div id="w-left-middle">
 		<div class="w-tab">
 			<div class="w-tab-menu">
                 <div>
     				<div class="views">
-    					<a class="view-grid selected" href="#view-grid">view-poster-movies</a>
+    				    <a class="view-grid selected" href="#view-grid">view-poster-movies</a>
     					<a class="view-list" href="#view-list">view-textcolumn-movies</a>
     				</div>
     				<ul>
@@ -331,8 +329,8 @@ $(document).ready(function () {
 			<div class="w-tab-menu">
                 <div>
     				<div class="views">
-    					<a class="view-grid selected" href="#view-grid">view-poster-reviews</a>
-    					<a class="view-list" href="#view-list">view-textcolumn-reviews</a>
+    				    <a class="view-grid selected" href="#view-grid">view-poster-movies</a>
+    					<a class="view-list" href="#view-list">view-textcolumn-movies</a>
     				</div>
     				<ul>
     					<li><a>Tin bên lề</a></li>
@@ -363,71 +361,26 @@ $(document).ready(function () {
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<div id="w-right">
-	<div style="margin-bottom: 15px;">
-		<img width="190px" height="230px" src="userfiles/eden_itunes_187x228.jpg" />
-	</div>
-	<div class="boxHelper thanhVien" style="text-align: center;">
-		<h3>Thành viên</h3>
-		<ul>
-			<li>
-				<h2><a href="#">Đăng nhập</a></h2>
-			</li>
-		</ul>
-		<div style="border-top: 1px solid #D8DFEA;"></div>
-		<ul>
-			<li>
-				<a id="lnkRegis" style="float: right; font-size: 14px;" href="#"><span>Đăng ký </span><i class="fa fa-chevron-circle-right"></i></a>
-			</li>
-		</ul>
-	</div>
-	<div class="boxHelper datVe" style="text-align: center;">
-		<h3>Đặt vé</h3>
-		<ul>
-			<li>
-				<select name="cmbPhim">
-					<option value="0" selected="selected">Phim</option>
-					<option value="1">Avengers</option>
-					<option value="2">2</option>
-				</select>
-			</li>
-			<li>
-				<select name="cmbSuatChieu">
-					<option value="0" selected="selected">Suất chiếu</option>
-					<option value="1">Avengers</option>
-					<option value="2">2</option>
-				</select>
-			</li>
-			<li>
-				<select name="cmbNgay">
-					<option value="0" selected="selected">Ngày</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-				</select>
-			</li>
-			<li>
-				<input type="submit" name="datVe" value="Đồng ý" />
-			</li>
-		</ul>
-	</div>
-	<div class="boxHelper lichChieu">
-		<h3>Lịch chiếu hôm nay</h3>
-		<ul>
-			<!-- -->
-		</ul>
-		<div style="border-top: 1px solid #D8DFEA;"></div>
-		<ul>
-			<li>
-				<a style="float: right; font-size: 14px;" href="index.php?act=schedule">Xem thêm <i class="fa fa-chevron-circle-right"></i></a>
-			</li>
-		</ul>
-	</div>
-	<!-- Quảng cáo -->
-	<div style="margin-bottom: 15px;">
-		<img style="margin-bottom: 5px;" width="190px" src="userfiles/focus_187x94.jpg" />
-		<img width="190px" src="userfiles/welcometome_187x94.jpg" />
+        
+        <div>
+			<table class="lich-chieuM">
+                <tr class="lich-chieuM-top">
+                    <td class="left"><h2>CHỦ NHẬT</h2></td>
+                    <td class="right"><h2>Lịch chiếu hôm nay</h2></td>
+                </tr>
+                <tr class="lich-chieuM-mid">
+                    <td class="left" style="vertical-align: middle;">29</td>
+                    <td class="right lichChieu">
+                        <ul>
+                		</ul>
+                    </td>
+                </tr>
+                <tr class="lich-chieuM-bottom">
+                    <td class="left"><h2>HAPPY DAY</h2></td>
+                    <td class="right"><h2><a href="index.php?act=schedule">Xem thêm <i class="fa fa-chevron-circle-right"></i></a></h2></td>
+                </tr>
+            </table>
+		</div>
 	</div>
 </div>
 
@@ -442,3 +395,9 @@ $(document).ready(function () {
         <input value="" placeholder="Email" />
     </div>
 </div>
+<script>
+$(document).ready(function () {
+    var h = $('.lichChieu').outerHeight(true);
+    $('.mid').css({'height':(h+56)+"px"});
+});
+</script>

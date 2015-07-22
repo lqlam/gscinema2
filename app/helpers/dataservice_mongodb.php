@@ -25,9 +25,9 @@
         public function SelectCollection($collection) {            
             return $collection = $this->Mongo_connect()->selectCollection($collection);
         }
-        public function Select($cond, $filter, $collection) {
+        public function Select($cond, $filter, $collection, $sort) {
             $collection = $this->SelectCollection($collection);
-            $cursor = $collection->find($cond,$filter);
+            $cursor = $collection->find($cond,$filter)->sort($sort);
             // iterate cursor to display title of documents
             $rows = array();
             foreach ($cursor as $item) {
