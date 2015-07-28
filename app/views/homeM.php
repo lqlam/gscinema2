@@ -97,8 +97,10 @@
         for(i = 0; i < arr[0].movies.length; i++) {
             var Title;
             arr[0].movies[i]._id[0].Title==''?Title=arr[0].movies[i]._id[0].IntTitle:Title=arr[0].movies[i]._id[0].Title;
+    		var intTitleNoSpace = arr[0].movies[i]._id[0].IntTitle.split(':').join('_');
+            intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
     		out += "<li>" +
-    			"<span class=\"tenPhim\"><a>"+Title+"</a></span>" +
+    			"<span class=\"tenPhim\"><a href=\"index.php?act=movie&inttitle="+intTitleNoSpace+"\">"+Title+"</a></span>" +
                 "<span class=\"suatChieu\" style=\"display: block;\">";
                 for(j = 0; j < arr[0].movies[i].schedule.length; j=j+2) {
     			    out += "<a room=\""+arr[0].movies[i].schedule[j+1].room+"\" class=\"notLink\">"+arr[0].movies[i].schedule[j].start+"</a>";
@@ -112,7 +114,7 @@
 </script>
 
 <script type="text/javascript">
-$(document).ready(function () {    
+$(document).ready(function () {
     $(".lnkMovies").click(function () {
         $(".w-tab-menu ul li").find(".selected").removeClass("selected");
 		$(this).addClass("selected");
@@ -161,7 +163,7 @@ $(document).ready(function () {
                     //if(arrstr[1]==null) arrstr[1]='';
                     if(typeof arrstr[1]=='undefined') arrstr[1]='';
                     var intTitleNoSpace = arr[i].IntTitle.split(':').join('_');
-                    var intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
+                    intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
                     var Title;
                     arr[i].Title==''?Title=arr[i].IntTitle:Title=arr[i].Title;
                     out += "<div class=\"b-items-grid\">" +
@@ -201,7 +203,7 @@ $(document).ready(function () {
 </script>
 <div id="w-left">
 	<div id="w-left-top">
-        <div id="sliderb_container" class="noSwipe" style="position: relative; top: 0px; left: 0px; width: 464px; height: 230px; overflow: hidden;">
+        <div id="sliderb_container" class="noSwipe" style="width: 464px; height: 230px; overflow: hidden;">
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
                 <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block; background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
@@ -239,7 +241,7 @@ $(document).ready(function () {
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides">
                     <div u="prototype" style="position: absolute; width: 464px; height: 45px; top: 0; left: 0;">
-                    <div u="thumbnailtemplate" style="font-family: verdana; font-weight: normal; position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:18px; padding-left:10px;"></div>
+                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:18px; padding-left:10px;"></div>
                     </div>
                 </div>
             </div>
@@ -325,7 +327,7 @@ $(document).ready(function () {
 			</div>
 		</div>
 
-		<div class="w-tab">
+		<!-- <div class="w-tab">
 			<div class="w-tab-menu">
                 <div>
     				<div class="views">
@@ -360,23 +362,23 @@ $(document).ready(function () {
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
         
-        <div>
+        <div style="border: 2px solid #CCCCCC;">
 			<table class="lich-chieuM">
                 <tr class="lich-chieuM-top">
-                    <td class="left"><h2>CHỦ NHẬT</h2></td>
+                    <td class="left"><h2>Thứ ba</h2></td>
                     <td class="right"><h2>Lịch chiếu hôm nay</h2></td>
                 </tr>
                 <tr class="lich-chieuM-mid">
-                    <td class="left" style="vertical-align: middle;">29</td>
+                    <td class="left" style="vertical-align: middle;">28</td>
                     <td class="right lichChieu">
                         <ul>
                 		</ul>
                     </td>
                 </tr>
                 <tr class="lich-chieuM-bottom">
-                    <td class="left"><h2>HAPPY DAY</h2></td>
+                    <td class="left"><h2>Happy Day</h2></td>
                     <td class="right"><h2><a href="index.php?act=schedule">Xem thêm <i class="fa fa-chevron-circle-right"></i></a></h2></td>
                 </tr>
             </table>
@@ -395,9 +397,12 @@ $(document).ready(function () {
         <input value="" placeholder="Email" />
     </div>
 </div>
-<script>
+<script type="text/javascript">
+var jsonColor = {"color":["rgb(0, 136, 204)","rgb(255, 106, 175)","rgb(103, 103, 103)","rgb(255, 52, 0)","rgb(242, 179, 86)","rgb(23, 110, 120)","rgb(131, 88, 49)","rgb(86, 133, 163)","rgb(203, 0, 0)","rgb(0, 150, 140)"]};
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 $(document).ready(function () {
-    var h = $('.lichChieu').outerHeight(true);
-    $('.mid').css({'height':(h+56)+"px"});
+    $('.lich-chieuM-top .left, .lich-chieuM-mid .left, .lich-chieuM-bottom .left').css({"background-color":jsonColor.color[getRandomInt(0,9)]});
 });
 </script>

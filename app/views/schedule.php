@@ -12,12 +12,23 @@ $(document).ready(function () {
 <script type="text/javascript">
     function MarginSchedule(){
         var divCount = $("#lc-box > div").length;
-        var width = $("#lichChieu-container").width();
-        $(".lc-b-items").css({'width': (width-((divCount-1)*15.1))/divCount+'px'});
-        $(".lc-b-items a img").css({'height': ((width-((divCount-1)*15.1))/divCount)*1.419+'px'});
+        var widthContainer = $("#lichChieu-container").width();
+        var height = ((widthContainer-((divCount-1)*15.1))/divCount)*1.419;
+        if(height <= 449)
+        {
+            var width = (widthContainer-((divCount-1)*15.1))/divCount;
+            $('#lichChieu-container').css({'overflow':'hidden'});
+        }
+        else
+        {
+            var width = (widthContainer-((divCount-1)*15.1)-18)/divCount;
+            $('#lichChieu-container').css({'overflow':'auto'});
+        }
+        $(".lc-b-items").css({'width': width+'px'});
+        $(".lc-b-items a img").css({'height': height+'px'});
         if(divCount==7){
-            $(".lc-b-items h3.duration").css({'margin-left': '70px'});
-            $(".lc-b-items h3.mmarating").css({'float': 'left', 'margin-right': '-70px'});
+            $(".lc-b-items h3.duration").css({'margin-left':'70px'});
+            $(".lc-b-items h3.mmarating").css({'float':'left', 'margin-right':'-70px'});
         }
     };
 </script>
@@ -25,8 +36,14 @@ $(document).ready(function () {
 <script type="text/javascript">
 function GetSchedule(index) {
     var url = "schedules.json";
+    
     $.getJSON(url, function (arr) {
         var out = "";
+        var jsonColor = {"color":["rgb(0, 136, 204)","rgb(255, 106, 175)","rgb(103, 103, 103)","rgb(255, 52, 0)","rgb(242, 179, 86)","rgb(23, 110, 120)","rgb(131, 88, 49)","rgb(86, 133, 163)","rgb(203, 0, 0)","rgb(0, 150, 140)"]};
+        
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
         for(i = 0; i < arr[index].movies.length; i++) {
             var date = arr[index].date.slice(-2)+arr[index].date.slice(4,7);
             
@@ -37,10 +54,12 @@ function GetSchedule(index) {
             var intTitleNoSpace = arr[index].movies[i]._id[0].IntTitle.split(':').join('_');
             var intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
             
+            var bgColor = jsonColor.color[getRandomInt(0,9)];
+            
             out += "<div class=\"lc-b-items\">" +
                 "<a href=\"index.php?act=movie&inttitle="+intTitleNoSpace+"\"><img width=\"100%\" src=\"img/movie/"+"thumb-"+arr[index].movies[i]._id[0]._id.$id+".jpg\" /></a>" +
-                "<h3 class=\"titlemovies\" style=\"background: #8B0A15\"><a>"+arr[index].movies[i]._id[0].IntTitle+"<br /></a></h3>" +
-                "<h3 class=\"titlemovies\" style=\"background: #8B0A15\"><a>"+arr[index].movies[i]._id[0].Title+"<br /></a></h3>" +
+                "<h3 class=\"titlemovies\" style=\"background-color: "+bgColor+"\"><a>"+arr[index].movies[i]._id[0].IntTitle+"<br /></a></h3>" +
+                "<h3 class=\"titlemovies\" style=\"background-color: "+bgColor+"\"><a>"+arr[index].movies[i]._id[0].Title+"<br /></a></h3>" +
                 "<h3 class=\"formatmovies formatmovies_2D\">"+arrstr[0]+"</h3>" +
                 "<h3 class=\"formatmovies formatmovies_3D\">"+arrstr[1]+"</h3>" +
                 "<h3 class=\"duration fntLightGrey\" style=\"float: right;\">"+arr[index].movies[i]._id[0].Runtime+" phút</h3>" +
@@ -51,7 +70,7 @@ function GetSchedule(index) {
                 "<div class=\"clear\"></div>" +
                 "<h3 class=\"timemovies\">";
                 for(j = 0; j < arr[index].movies[i].schedule.length; j=j+2) {
-                    out += "<a href=\"#\">"+arr[index].movies[i].schedule[j].start+"</a><a style=\"color: #0088CC;\"></a>";
+                    out += "<a href=\"#\">"+arr[index].movies[i].schedule[j].start+"</a></a>";
                 }
                 out += "</h3>"+
             "</div>";
@@ -83,14 +102,7 @@ function GetSchedule(index) {
 </script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        //khoi tao
-        //var index = 0;
-        //GetSchedule(index);
-        
-        //$(".thumb-tray-content-items").first().find(".dayofmonth").addClass("selected");
-        //$(".thumb-tray-content-items").first().find(".day").addClass("selected");
-        
+    $(document).ready(function () {        
         $(".thumb-tray-content-items").click(function () {
             var id = $(this).attr("data-id");
             GetSchedule(id);
@@ -122,7 +134,6 @@ $(document).ready(function(e) {
     });
 });
 </script>
-
 <div id="lichChieu-container">
     <div id="lc-box" class="effect" class="ui-widget-content ui-corner-all">
         <!-- -->

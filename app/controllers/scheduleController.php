@@ -53,7 +53,7 @@
     $scheduleController = new scheduleController();
     $resultDateOfSchedule = $scheduleController->out;    
 
-    if($_SERVER['HTTP_HOST'] == "m.gs2.com" || $_SERVER['HTTP_HOST'] == "192.168.1.4")
+    if($_SERVER['HTTP_HOST'] != "gs2.com")
 		include_once ('../app/views/scheduleM.php');
     else        
 		include_once ('../app/views/schedule.php');

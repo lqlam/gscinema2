@@ -10,14 +10,25 @@ $(document).ready(function () {
     }
 </style>
 <script type="text/javascript">
-    function MarginSchedule(){
+    function MarginSchedule1(){
         var divCount = $("#lc-box > div").length;
-        var width = $("#lichChieu-container").width();
-        $(".lc-b-items").css({'width': (width-((divCount-1)*15.1))/divCount+'px'});
-        $(".lc-b-items a img").css({'height': ((width-((divCount-1)*15.1))/divCount)*1.419+'px'});
+        var widthContainer = $("#lichChieu-container").width();
+        var height = ((widthContainer-((divCount-1)*15.1))/divCount)*1.419;
+        if(height <= 449)
+        {
+            var width = (widthContainer-((divCount-1)*15.1))/divCount;
+            $('#lichChieu-container').css({'overflow':'hidden'});
+        }
+        else
+        {
+            var width = (widthContainer-((divCount-1)*15.1)-18)/divCount;
+            $('#lichChieu-container').css({'overflow':'auto'});
+        }
+        $(".lc-b-items").css({'width': width+'px'});
+        $(".lc-b-items a img").css({'height': height+'px'});
         if(divCount==7){
-            $(".lc-b-items h3.duration").css({'margin-left': '70px'});
-            $(".lc-b-items h3.mmarating").css({'float': 'left', 'margin-right': '-70px'});
+            $(".lc-b-items h3.duration").css({'margin-left':'70px'});
+            $(".lc-b-items h3.mmarating").css({'float':'left', 'margin-right':'-70px'});
         }
     };
 </script>
@@ -57,7 +68,7 @@ function GetSchedule(index) {
             "</div>";
         }
         out += "";
-        $("#lc-box").empty().append(out);
+        $("#lc-box1").empty().append(out);
         MarginSchedule();
     });
 }
@@ -126,6 +137,113 @@ $(document).ready(function(e) {
 <div id="lichChieu-container">
     <div id="lc-box" class="effect" class="ui-widget-content ui-corner-all">
         <!-- -->
+        <div class="lc-b-items">
+            <table class="lc-b-itemsM">
+                <tr>
+                    <td class="left"><h2 class="title"><a style="font-size: 25pt;">Avengers: Age of Ultron</a></h2></td>
+                    <td class="right">
+                        <h3 class="formatmovies formatmovies_3D">3D</h3>
+                        <h3 class="formatmovies formatmovies_2D">2D</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><h2 class="title"><a>Avengers: Đế Chế Ultron</a></h2></td>
+                    <td class="right">
+                        <h3 class="duration fntLightGrey" style="float: right;">13+ | 141 phút</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left" style="color: rgba(0, 0, 0, 0.4);"><h2>Hành động, Giả tưởng, Kịch tính</h2></td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2 class="timemovies">
+                            <a href="#">09:00</a><span>&nbsp;|&nbsp;</span><a href="#">09:00</a><span>&nbsp;|&nbsp;</span>
+                        </h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="lc-b-items" style="background-color: rgb(255, 106, 175);">
+            <table class="lc-b-itemsM">
+                <tr>
+                    <td class="left"><h2><a style="font-size: 25pt; text-transform: uppercase; color: #ffffff;">Avengers: Age of Ultron</a></h2></td>
+                    <td class="right">
+                        <h3 class="formatmovies formatmovies_3D">3D</h3>
+                        <h3 class="formatmovies formatmovies_2D">2D</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><h2 style="text-transform: uppercase; color: #ffffff;">Avengers: Đế Chế Ultron</h2></td>
+                    <td class="right">
+                        <h3 class="duration fntLightGrey" style="float: right;">13+ | 141 phút</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left" style="color: rgba(0, 0, 0, 0.4);"><h2>Hành động, Giả tưởng, Kịch tính</h2></td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2 class="" style="min-height: 20px; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4); padding: 2px 10px; white-space: normal; color: #ffffff;">09:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="lc-b-items" style="background-color: rgb(255, 106, 175);">
+            <table class="lc-b-itemsM">
+                <tr>
+                    <td class="left"><h2><a style="font-size: 25pt; text-transform: uppercase; color: #ffffff;">Avengers: Age of Ultron</a></h2></td>
+                    <td class="right">
+                        <h3 class="formatmovies formatmovies_3D">3D</h3>
+                        <h3 class="formatmovies formatmovies_2D">2D</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><h2 style="text-transform: uppercase; color: #ffffff;">Avengers: Đế Chế Ultron</h2></td>
+                    <td class="right">
+                        <h3 class="duration fntLightGrey" style="float: right;">13+ | 141 phút</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left" style="color: rgba(0, 0, 0, 0.4);"><h2>Hành động, Giả tưởng, Kịch tính</h2></td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2 class="" style="min-height: 20px; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4); padding: 2px 10px; white-space: normal; color: #ffffff;">09:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="lc-b-items" style="background-color: rgb(255, 106, 175);">
+            <table class="lc-b-itemsM">
+                <tr>
+                    <td class="left"><h2><a style="font-size: 25pt; text-transform: uppercase; color: #ffffff;">Avengers: Age of Ultron</a></h2></td>
+                    <td class="right">
+                        <h3 class="formatmovies formatmovies_3D">3D</h3>
+                        <h3 class="formatmovies formatmovies_2D">2D</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left"><h2 style="text-transform: uppercase; color: #ffffff;">Avengers: Đế Chế Ultron</h2></td>
+                    <td class="right">
+                        <h3 class="duration fntLightGrey" style="float: right;">13+ | 141 phút</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left" style="color: rgba(0, 0, 0, 0.4);"><h2>Hành động, Giả tưởng, Kịch tính</h2></td>
+                    <td class="right"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <h2 class="" style="min-height: 20px; background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4); padding: 2px 10px; white-space: normal; color: #ffffff;">09:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00 | 11:00</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
     </div>
 </div>
 <div id="thumb-tray">
@@ -929,3 +1047,14 @@ $(document).ready(function(e) {
         </div>
     </div>
 </div>
+<script type="text/javascript">
+var jsonColor = {"color":["rgb(0, 136, 204)","rgb(255, 106, 175)","rgb(103, 103, 103)","rgb(255, 52, 0)","rgb(242, 179, 86)","rgb(23, 110, 120)","rgb(131, 88, 49)","rgb(86, 133, 163)","rgb(203, 0, 0)","rgb(0, 150, 140)"]};
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+$(document).ready(function () {
+    var divCount = $("#lc-box > div").length;
+    for(i = 0; i < divCount; i++)
+        $($('.lc-b-items')[i]).css({"background-color":jsonColor.color[getRandomInt(0,9)]});
+});
+</script>

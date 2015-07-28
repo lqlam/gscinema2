@@ -97,8 +97,10 @@
         for(i = 0; i < arr[0].movies.length; i++) {
             var Title;
             arr[0].movies[i]._id[0].Title==''?Title=arr[0].movies[i]._id[0].IntTitle:Title=arr[0].movies[i]._id[0].Title;
+            var intTitleNoSpace = arr[0].movies[i]._id[0].IntTitle.split(':').join('_');
+            intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
     		out += "<li>" +
-    			"<span class=\"tenPhim\"><a>"+Title+"</a></span>" +
+    			"<span class=\"tenPhim\"><a href=\"index.php?act=movie&inttitle="+intTitleNoSpace+"\">"+Title+"</a></span>" +
                 "<span class=\"suatChieu\" style=\"display: block;\">";
                 for(j = 0; j < arr[0].movies[i].schedule.length; j=j+2) {
     			    out += "<a room=\""+arr[0].movies[i].schedule[j+1].room+"\" class=\"notLink\">"+arr[0].movies[i].schedule[j].start+"</a>";
@@ -161,7 +163,7 @@ $(document).ready(function () {
                     //if(arrstr[1]==null) arrstr[1]='';
                     if(typeof arrstr[1]=='undefined') arrstr[1]='';
                     var intTitleNoSpace = arr[i].IntTitle.split(':').join('_');
-                    var intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
+                    intTitleNoSpace = intTitleNoSpace.split(' ').join('-');
                     var Title;
                     arr[i].Title==''?Title=arr[i].IntTitle:Title=arr[i].Title;
                     out += "<div class=\"b-items-grid\">" +
@@ -239,7 +241,7 @@ $(document).ready(function () {
                 <!-- Thumbnail Item Skin Begin -->
                 <div u="slides">
                     <div u="prototype" style="position: absolute; width: 464px; height: 45px; top: 0; left: 0;">
-                    <div u="thumbnailtemplate" style="font-family: verdana; font-weight: normal; position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; color:#fff; line-height: 45px; font-size:18px; padding-left:10px;"></div>
                     </div>
                 </div>
             </div>

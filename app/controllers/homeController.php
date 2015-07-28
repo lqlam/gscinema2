@@ -92,7 +92,7 @@
     }
     
     $homeController = new homeController();
-    if($_SERVER['HTTP_HOST'] == "m.gs2.com" || $_SERVER['HTTP_HOST'] == "192.168.1.4")
+    if($_SERVER['HTTP_HOST'] != "gs2.com")
         include_once('../app/views/homeM.php');
     else        
         include_once('../app/views/home.php');

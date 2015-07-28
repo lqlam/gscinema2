@@ -29,6 +29,19 @@ include_all_php("../app/helpers");
     <script type="text/javascript" src="js/jqwidgets/jqxwindow.js"></script>
     
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>    
+    <script>
+        (function($){
+            $(window).load(function(){
+                $("#lichChieu-container").mCustomScrollbar({
+                    autoHideScrollbar: true
+                });
+            });
+        })(jQuery);
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function($) {
             $.getScript("js/jqxwindowMap.js");
@@ -67,28 +80,23 @@ include_all_php("../app/helpers");
     <div id="footer">
         <div id="f-content">
             <div style="border-top: 1px solid #D8DFEA; margin-bottom: 15px;"></div>
-            <div id="f-top-content">
-                <div class="f-left" style="float: left">
-                    <div><i class="fa fa-map-marker fntGrey"></i><h3 class="fntGrey">108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang</h3></div>
-                    <div><i class="fa fa-mobile fntGrey"></i><h3 class="fntGrey">0763 958 958</h3></div>
-                    <div><i class="fa fa-envelope-o fntGrey"></i><h3 class="fntGrey">saovanglongxuyen@gmail.com</h3></div>
+            <div class="top">
+				<h3><a id="lnkViewMap" href="#">Vị trí chúng tôi trên bản đồ</a><b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;</b><a href="#">Đăng ký nhận tin từ chúng tôi</a><b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;</b><a href="#">Liên hệ</a></h3>
+                <div class="left" style="float: left">
+                    <h3>108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang<b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;</b></h3>
+                    <h3>0763-958-958<b>&nbsp;&nbsp;&middot;&nbsp;&nbsp;</b></h3>
+                    <h3>saovanglongxuyen@gmail.com</h3>
                 </div>
-                <div class="f-right" style="float: right">
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /></div>
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /></div>
-                    <div><img src="images/email.svg" width="20px" height="20px" alt="" /></div>
+                <div class="right" style="float: right">
+                    <h3><a href="#" style=" font-size: 25px;"><i class="fa fa-facebook-square"></i></a></h3>
+                    <h3><a href="#" style=" font-size: 25px;"><i class="fa fa-google-plus-square"></i></a></h3>
+                    <h3><a href="#" style=" font-size: 25px;"><i class="fa fa-youtube-square"></i></a></h3>
                 </div>
-            </div>
-            <div id="f-bottom-content">
-                <div class="f-left" style="float: left">
-                    <div><h3 class="fntGrey">Copyright &copy; 2015 Công ty TNHH Sao Vàng Long Xuyên</h3></div>
-                </div>
-                <div class="f-right" style="float: right">
-                    <div>
-                        <h3><a id="lnkViewMap" href="#">Vị trí chúng tôi trên bản đồ</a><b class="fntGrey"> &middot; </b><a href="#">Đăng ký nhận tin từ chúng tôi</a><b class="fntGrey"> &middot; </b><a href="#">Liên hệ</a></h3>
-                    </div>
-                </div>
-            </div>
+			</div>
+            <div class="bottom">
+                <h3>Công ty TNHH Sao Vàng Long Xuyên &copy; 2015</h3>
+                <h3 style="float: right;">Powered by <a href="http://fb.com/masterlam2">Lý Quế Lâm</a></h3>
+			</div>
         </div>
     </div>
     <div id="jqxwindowMap">

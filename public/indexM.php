@@ -14,7 +14,6 @@ include_all_php("../app/helpers");
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta http-equiv="description" content="Rạp chiếu phim GoldStarCine Long Xuyên" />
     <meta name="Keywords" content="goldstarcine, rạp chiếu phim, Long Xuyên, Nhà thiếu nhi An Giang, 108 Điện Biên Phủ, phim sắp chiếu, phim 3D chiếu rạp, gold star cine" />
-	<!-- <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1, maximum-scale=1, user-scalable=yes" /> -->
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, user-scalable=yes"/>    
     <link rel="icon" href="images/iconPage.png" type="image/x-icon"/>
 
@@ -30,9 +29,19 @@ include_all_php("../app/helpers");
     <script type="text/javascript" src="js/jqwidgets/jqxwindow.js"></script>
     
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/sliding.js"></script>
-    <script type="text/javascript" src="js/jquery.touchSwipe.js"></script>
-    <script type="text/javascript" src="js/touchscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" />
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.min.js"></script>    
+    <script>
+        (function($){
+            $(window).load(function(){
+                $("#menu-mobile-bottom").mCustomScrollbar({
+                    autoHideScrollbar: true
+                });
+            });
+        })(jQuery);
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function($) {
@@ -62,44 +71,54 @@ include_all_php("../app/helpers");
         </div>
     </div>
     <div id="menu-mobile" class="transparent hidden">
-        <h3>Thành viên</h3>
-        <ul class="h-navM">
-            <li><a href="#"><i class="fa fa-user"></i>Đăng nhập</a></li>
-            <li style="border: 0px;"><a href="#"><i class="fa fa-user-plus"></i>Đăng ký</a></li>
-        </ul>
-        <h3>Menu chính</h3>
-        <ul class="h-navM">
-            <li><a href="index.php?act=introduce"><i class="fa fa-info-circle"></i>Giới thiệu</a></li>
-            <li><a href="index.php?act=schedule"><i class="fa fa-calendar-o"></i>Lịch chiếu</a></li>
-            <li><a href="index.php?act=tickettable"><i class="fa fa-ticket"></i>Giá vé</a></li>
-            <li><a href="index.php?act=movielist"><i class="fa fa-film"></i>Phim</a></li>
-            <li style="border: 0px;"><a href="index.php?act=reviewlist"><i class="fa fa-file-text"></i>Tin tức</a></li>
-        </ul>
-        <h3>Hỗ trợ</h3>
-        <ul class="h-navM" style="padding-bottom: 80px;">
-            <li><a href="index.php?act=tuyendung"><i class="fa fa-paperclip"></i>Tuyển dụng</a></li>
-            <li><a href="#"><i class="fa fa-at"></i>Liên hệ</a></li>
-            <li><a href="#"><i class="fa fa-globe"></i>Vị trí chúng tôi trên bản đồ</a></li>
-            <li style="border: 0px;"><a href="#"><i class="fa fa-envelope"></i>Đăng ký nhận mail</a></li>
-        </ul>
-        <!-- <ul class="h-navM-small">
-            <li class="active"><a href="index.php?act=tuyendung">Tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
-            <li><a href="#">Vị trí chúng tôi trên bản đồ</a></li>
-            <li style="border: 0px;"><a href="#">Đăng ký nhận tin</a></li>
-        </ul> -->
+        <div id="menu-mobile-top">
+            <div style="float: left; padding: 20px 0 0 25px;"><img src="images/iconPage-large.png" /></div>
+            <div style="float: left; padding: 25px 0 0 25px;"><h2 style="font-size: 25pt; font-weight: bold; color: #ffffff;">GoldStarCine</h2><h2 style="font-weight: bold; color: #ffffff;">Rạp chiếu phim tại Long Xuyên</h2></div>
+        </div>
+        <div id="menu-mobile-bottom">
+            <ul class="h-navM">
+                <li><a href="index.php?act=introduce"><i class="fa fa-info-circle"></i>Giới thiệu</a></li>
+                <li><a href="index.php?act=schedule"><i class="fa fa-calendar-o"></i>Lịch chiếu</a></li>
+                <li><a href="index.php?act=tickettable"><i class="fa fa-ticket"></i>Giá vé</a></li>
+                <li><a href="index.php?act=movielist"><i class="fa fa-film"></i>Phim</a></li>
+                <li style="border: 0px;"><a href="index.php?act=reviewlist"><i class="fa fa-file-text"></i>Tin tức</a></li>
+            </ul>
+            <h3>Thành viên</h3>
+            <ul class="h-navM">
+                <li><a href="#"><i class="fa fa-user"></i>Đăng nhập</a></li>
+                <li style="border: 0px;"><a href="#"><i class="fa fa-user-plus"></i>Đăng ký</a></li>
+            </ul>
+            <h3>Hỗ trợ</h3>
+            <ul class="h-navM" style="padding-bottom: 240px;">
+                <li><a href="index.php?act=tuyendung"><i class="fa fa-paperclip"></i>Tuyển dụng</a></li>
+                <li><a href="#"><i class="fa fa-at"></i>Liên hệ</a></li>
+                <li><a href="#"><i class="fa fa-globe"></i>Vị trí chúng tôi trên bản đồ</a></li>
+                <li style="border: 0px;"><a href="#"><i class="fa fa-envelope"></i>Đăng ký nhận mail</a></li>
+            </ul>
+            <!-- <ul class="h-navM-small">
+                <li class="active"><a href="index.php?act=tuyendung">Tuyển dụng</a></li>
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Vị trí chúng tôi trên bản đồ</a></li>
+                <li style="border: 0px;"><a href="#">Đăng ký nhận tin</a></li>
+            </ul> -->
+        </div>        
     </div>
     <div id="wrapper">
         <?php include ('../config/routes.php'); ?>
     </div>
-    <!-- <div id="footer">
-        <div style="border-top: 2px solid #D8DFEA; margin-bottom: 15px;"></div>
-        <h3 class="fntGrey">Giao diện: Điện thoại&nbsp;|&nbsp;Máy tính</h3>
-        <h3 class="fntGrey">Địa chỉ: 108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang</h3>
-        <h3 class="fntGrey">Số điện thoại: 0763-958-958</h3>
-        <h3 class="fntGrey">Email: saovanglongxuyen@gmail.com</h3>
-        <h3 class="fntGrey">Copyright &copy; 2015 Công ty TNHH Sao Vàng Long Xuyên</h3>
-    </div> -->
+    <div id="footer">
+        <div class="top">
+            <!-- <div style="border-top: 2px solid #D8DFEA; margin-bottom: 15px;"></div> -->
+            <h3>Giao diện: Điện thoại&nbsp;|&nbsp;Máy tính</h3>
+            <h3>Địa chỉ: 108 Điện Biên Phủ, P. Mỹ Long, TP. Long Xuyên, An Giang</h3>
+            <h3>Số điện thoại: 0763-958-958</h3>
+            <h3>Email: saovanglongxuyen@gmail.com</h3>
+        </div>
+        <div class="bottom">
+            <h3>Công ty TNHH Sao Vàng Long Xuyên &copy; 2015</h3>
+            <h3>Powered by <a href="http://fb.com/masterlam2">Lý Quế Lâm</a></h3>
+        </div>
+    </div>
     <div id="jqxwindowMap">
         <div>Vị trí chúng tôi trên bản đồ</div>
         <div id="map_canvas"></div>
@@ -220,6 +239,31 @@ $(document).ready(function() {
         $("#menu-mobile ul li a").click(function () {
             $("#menu-mobile ul li").find(".selected").removeClass("selected");
     		$(this).addClass("selected");        
+        });
+        
+        $('#btmenu').click(function() {
+            var $moving = $('#menu-mobile');
+            var $followMoving = $('#header, #wrapper, #footer');
+        	//$moving.animate({left: parseInt($moving.css('left'),10) == 0 ? -$moving.outerWidth() : 0});
+            $moving.animate({left: parseInt($moving.css('left'),10) == 0 ? -461 : 0});
+            $followMoving.animate({left: parseInt($moving.css('left'),10) != 0 ? 430 : 0});
+        	if($moving.hasClass("hidden"))
+        	{
+        		$(this).find("a").removeClass("not-selected");
+        		$(this).find("a").addClass("selected");
+        		$moving.removeClass("hidden");
+        		$moving.addClass("visible");
+        		$('body').css({'overflow':"hidden"});
+        	}
+        	else
+        	{
+        		$(this).find("a").removeClass("selected");
+        		$(this).find("a").addClass("not-selected");
+        		$moving.removeClass("visible");
+        		$moving.addClass("hidden");
+        		$('body').css({'overflow':"auto"});
+        	}
+        	return false;
         });
     });
 </script>
